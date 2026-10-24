@@ -3568,6 +3568,7 @@ void RenderingServer::_bind_methods() {
 
 	ADD_SIGNAL(MethodInfo("frame_pre_draw"));
 	ADD_SIGNAL(MethodInfo("frame_post_draw"));
+	ADD_SIGNAL(MethodInfo("frame_pre_swap"));
 
 	ClassDB::bind_method(D_METHOD("force_sync"), &RenderingServer::sync);
 	ClassDB::bind_method(D_METHOD("force_draw", "swap_buffers", "frame_step"), &RenderingServer::draw, DEFVAL(true), DEFVAL(0.0));

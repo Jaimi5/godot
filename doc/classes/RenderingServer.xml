@@ -4689,6 +4689,11 @@
 				Emitted at the end of the frame, after the RenderingServer has finished updating all the Viewports.
 			</description>
 		</signal>
+		<signal name="frame_pre_swap">
+			<description>
+				Emitted after the RenderingServer has drawn all the Viewports of the frame and before it submits the frame and swaps buffers. GPU commands recorded on the main [RenderingDevice] in a handler of this signal (for example a compute pass reading a viewport's texture and a [method RenderingDevice.buffer_get_data_async]) run in this frame, so their results arrive one frame earlier than when recorded in [signal frame_post_draw].
+			</description>
+		</signal>
 		<signal name="frame_pre_draw">
 			<description>
 				Emitted at the beginning of the frame, before the RenderingServer updates all the Viewports.

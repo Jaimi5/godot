@@ -111,6 +111,10 @@ void RenderingServerDefault::_draw(bool p_swap_buffers, double frame_step) {
 	GodotProfileZoneGrouped(_profile_zone, "canvas_render->update");
 	RSG::canvas_render->update();
 
+	// GPU work recorded here runs in this frame, so its buffer_get_data_async()
+	// callbacks come a frame earlier than when recorded in frame_post_draw.
+	emit_signal(SNAME("frame_pre_swap"));
+
 	GodotProfileZoneGrouped(_profile_zone, "rasterizer->end_frame");
 	RSG::rasterizer->end_frame(p_swap_buffers);
 
